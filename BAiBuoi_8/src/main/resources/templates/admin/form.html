@@ -1,0 +1,28 @@
+<form th:action="@{/admin/products/save}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <div class="mb-3">
+        <label>Tên sản phẩm:</label>
+        <input type="text" th:field="*{name}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Giá:</label>
+        <input type="number" th:field="*{price}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Link ảnh:</label>
+        <input type="text" th:field="*{image}" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>Danh mục:</label>
+        <select th:field="*{category.id}" class="form-control">
+            <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu lại</button>
+    <a href="/admin/products" class="btn btn-secondary">Hủy</a>
+</form>
